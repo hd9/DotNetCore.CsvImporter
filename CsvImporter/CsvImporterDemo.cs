@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -20,7 +21,7 @@ namespace CsvImporter
                 using (var fs = new StreamReader(filename))
                 {
                     // I just need this one line to load the records from the file in my List<CsvLine>
-                    lines = new CsvHelper.CsvReader(fs).GetRecords<CsvLine>().ToList();
+                    lines = new CsvHelper.CsvReader(fs, CultureInfo.CurrentCulture).GetRecords<CsvLine>().ToList();
                 }
             }
             catch (Exception e)
